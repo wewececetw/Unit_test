@@ -9,9 +9,10 @@ class Post extends Model
     //
     protected $table = 'posts';
     protected $primaryKey = "posts_id";
+    protected $fillable = ['title','content'];
 
     public function posts()
     {
-        return $this->hasOne('App\Comment','posts_id');
+        return $this->hasOne(Comment::class);
     }
 }

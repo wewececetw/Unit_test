@@ -45,10 +45,13 @@ class PostController extends Controller
         $input = ['title' => $request->title , 'content' => $request->content];
         
         $post = Post::create($input);
+        $posts_id = $post->posts_id;
+        $com_input = ['posts_id' => $posts_id,'messages' => $request->messages];
+        
 
-        $com_input = ['messages' => $request->messages,'posts_id' => $post->posts_id];
+        $comments = new Post();
+        $comments->posts()->create($com_input);
 
-        $comments = Comment::create($com_input);
 
         if(isset($post)){
             $data = ['post' => $post , 'comments' => $comments];

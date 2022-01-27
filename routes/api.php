@@ -22,8 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->group(function () {
-    Route::apiResource('posts', 'api\PostController');
+    
 });
+Route::apiResource('posts', 'api\PostController');
 
 Route::group(['prefix' => 'auth', 'namespace' => 'Api'], function () {
     Route::get('/', 'AuthController@me')->name('me');

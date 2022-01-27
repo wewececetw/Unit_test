@@ -9,9 +9,10 @@ class Comment extends Model
     //
     protected $table = 'comments';
     protected $primaryKey = "comments_id";
-
+    protected $fillable = ['messages'];
+    
     public function comments()
     {
-        return $this->hasOne('App\Post','posts_id');
+        return $this->belongsTo(Post::class);
     }
 }
